@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn } from "typeorm";
 import { User } from "src/users/entities/user.entity";
 import { Specialty } from "src/specialties/entities/specialty.entity";
+import { Transform } from "class-transformer";
 
 @Entity()
 export class Appointment {
@@ -16,8 +17,9 @@ export class Appointment {
     @ManyToOne(()=> Specialty)
     specialty: Specialty;
 
-    @Column({type: 'timestamp'})
-    date: Date;
+    @Column()
+    @Transform(({ value }) => value.toLocaleString('pt-BR'), { toPlainOnly: true })
+  date: Date;
 
     @CreateDateColumn({ name: 'created_at'})
     createdAt: Date;

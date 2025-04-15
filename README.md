@@ -1,98 +1,112 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+Sistema de Agendamento Médico
+Descrição
+Este projeto é um Sistema de Agendamento Médico que permite o cadastro de pacientes, médicos e especialidades médicas. A API possibilita o agendamento de consultas, com filtros de pesquisa por médico, paciente, data e especialidade. A validação de horário livre é realizada antes de agendar uma consulta.
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Funcionalidades
+Cadastro de Usuários:
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Pacientes e médicos podem ser cadastrados.
 
-## Description
+CRUD de Agendamentos:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Criar, listar, editar e remover agendamentos de consultas médicas.
 
-## Project setup
+Filtros de Agendamentos:
 
-```bash
-$ npm install
-```
+Filtros por médico, paciente, data e especialidade.
 
-## Compile and run the project
+Validação de Horário Livre:
 
-```bash
-# development
-$ npm run start
+Antes de agendar uma consulta, verifica-se se o horário desejado está disponível.
 
-# watch mode
-$ npm run start:dev
+Tecnologias Utilizadas
+NestJS: Framework Node.js para construção de APIs.
 
-# production mode
-$ npm run start:prod
-```
+PostgreSQL: Banco de dados relacional.
 
-## Run tests
+Docker: Contêineres para facilitar o desenvolvimento e deploy.
+
+Clean Architecture: Organização de código seguindo a arquitetura limpa.
+
+Swagger: Documentação interativa da API.
+
+class-validator: Validações de entrada de dados.
+
+Pré-requisitos
+Docker: Necessário para rodar o PostgreSQL e a aplicação NestJS.
+
+Node.js: Requerido para o desenvolvimento e testes locais.
+
+PostgreSQL: Banco de dados para persistir dados de agendamentos, usuários e especialidades.
+
+Como Rodar o Projeto
+
+1. Clonar o repositório
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+git clone https://github.com/usuario/repositorio.git
+cd repositorio
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+2. Construir os containers com o Docker
+   Execute o seguinte comando para subir o banco de dados PostgreSQL:
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+docker-compose up -d
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+3. Instalar as dependências
+   Instale as dependências do projeto NestJS:
 
-## Resources
+```bash
+npm install
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+4. Rodar a aplicação
+   Agora, você pode iniciar o servidor NestJS:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```bash
+npm run start:dev
+```
 
-## Support
+Isso fará o servidor NestJS rodar na URL http://localhost:3000.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+5. Acessar a documentação via Swagger
+   Após rodar a aplicação, você pode acessar a documentação interativa da API com Swagger em:
 
-## Stay in touch
+```bash
+http://localhost:3000/api
+```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Endpoints
+POST /users
+Cadastro de usuários (médico ou paciente).
 
-## License
+Body:
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+```bash
+{
+  "name": "João Silva",
+  "email": "joao@exemplo.com",
+  "password": "senha123",
+  "role": "patient"
+}
+```
+
+Resposta: 201 Created
+
+GET /users
+Listar todos os usuários.
+
+Resposta: 200 OK
+
+```bash
+[
+  {
+    "id": 1,
+    "name": "João Silva",
+    "email": "joao@exemplo.com",
+    "role": "patient"
+  }
+]
+```
