@@ -1,68 +1,74 @@
-Sistema de Agendamento Médico
-Descrição
-Este projeto é um Sistema de Agendamento Médico que permite o cadastro de pacientes, médicos e especialidades médicas. A API possibilita o agendamento de consultas, com filtros de pesquisa por médico, paciente, data e especialidade. A validação de horário livre é realizada antes de agendar uma consulta.
+🏥 Sistema de Agendamento Médico
+🚀 Descrição
+Sistema de agendamento médico simples com funcionalidades de cadastro de pacientes e médicos, agendamento de consultas, e filtros de busca por especialidade, médico, paciente e data.
 
-Funcionalidades
-Cadastro de Usuários:
+🛠 Tecnologias
+NestJS: Framework para Node.js, usado para construir a API.
 
-Pacientes e médicos podem ser cadastrados.
+PostgreSQL: Banco de dados relacional utilizado para persistência.
 
-CRUD de Agendamentos:
+Docker: Usado para containerizar a aplicação e o banco de dados.
 
-Criar, listar, editar e remover agendamentos de consultas médicas.
+Swagger: Para documentação automática da API.
 
-Filtros de Agendamentos:
+Class-Validator: Para validações de dados.
 
-Filtros por médico, paciente, data e especialidade.
+TypeORM: ORM para interação com o banco de dados PostgreSQL.
 
-Validação de Horário Livre:
+📦 Módulos principais
+users: Cadastro de pacientes e médicos
 
-Antes de agendar uma consulta, verifica-se se o horário desejado está disponível.
+appointments: Agendamentos de consultas
 
-Tecnologias Utilizadas
-NestJS: Framework Node.js para construção de APIs.
+specialties: Especialidades médicas (ex: cardiologia, ortopedia)
 
-PostgreSQL: Banco de dados relacional.
+🔧 Funcionalidades
+Cadastro de usuários (paciente ou médico): Permite registrar médicos e pacientes no sistema.
 
-Docker: Contêineres para facilitar o desenvolvimento e deploy.
+CRUD de agendamentos: Permite criar, atualizar, buscar e excluir agendamentos.
 
-Clean Architecture: Organização de código seguindo a arquitetura limpa.
+Filtro de agendamentos por médico ou paciente: Permite buscar agendamentos de um médico ou paciente específico.
 
-Swagger: Documentação interativa da API.
+Filtro por data e especialidade: Permite buscar agendamentos de uma data ou especialidade específica.
 
-class-validator: Validações de entrada de dados.
+Validação de horário livre antes de agendar: Verifica se o horário desejado para o agendamento já está ocupado.
 
-Pré-requisitos
-Docker: Necessário para rodar o PostgreSQL e a aplicação NestJS.
+📝 Como rodar o projeto
 
-Node.js: Requerido para o desenvolvimento e testes locais.
+🐳 Docker
+Iniciar o banco de dados e o NestJS com Docker:
 
-PostgreSQL: Banco de dados para persistir dados de agendamentos, usuários e especialidades.
+Crie e inicie os containers do PostgreSQL e do NestJS:
 
-Como Rodar o Projeto
+```bash
+docker-compose up --build
+```
+
+Acessar a API:
+
+A API ficará disponível no endereço http://localhost:3000.
+
+Swagger:
+
+A documentação da API está disponível no Swagger em http://localhost:3000/api.
+
+🚀 Rodar Localmente
 
 1. Clonar o repositório
 
 ```bash
-git clone https://github.com/usuario/repositorio.git
-cd repositorio
+git clone https://github.com:torresgdev/medical_api.git
+cd medical_api
 ```
 
-2. Construir os containers com o Docker
-   Execute o seguinte comando para subir o banco de dados PostgreSQL:
-
-```bash
-docker-compose up -d
-```
-
-3. Instalar as dependências
+2. Instalar as dependências
    Instale as dependências do projeto NestJS:
 
 ```bash
 npm install
 ```
 
-4. Rodar a aplicação
+3. Rodar a aplicação
    Agora, você pode iniciar o servidor NestJS:
 
 ```bash
@@ -78,35 +84,48 @@ Isso fará o servidor NestJS rodar na URL http://localhost:3000.
 http://localhost:3000/api
 ```
 
-Endpoints
-POST /users
-Cadastro de usuários (médico ou paciente).
+---
 
-Body:
+🧪 Testando a API
+
+Criar um Usuário Dr.
 
 ```bash
 {
-  "name": "João Silva",
+  "name": "Dr. João Silva",
   "email": "joao@exemplo.com",
+  "password": "senha123",
+  "role": "doctor"
+}
+```
+
+Criar um Usuário Paciente.
+
+```bash
+{
+  "name": "Kleber Bezerra",
+  "email": "klb@exemplo.com",
   "password": "senha123",
   "role": "patient"
 }
 ```
 
-Resposta: 201 Created
-
-GET /users
-Listar todos os usuários.
-
-Resposta: 200 OK
+Criar uma especialização.
 
 ```bash
-[
-  {
-    "id": 1,
-    "name": "João Silva",
-    "email": "joao@exemplo.com",
-    "role": "patient"
+{
+    "name": "Oftalmologia",
+    "description": "Especialidade médica focada no sistema ocular",
   }
-]
+```
+
+Criar uma consulta.
+
+```Bash
+{
+  "patientId": 1,
+  "doctorId": 1,
+  "specialtyId": 1,
+  "date": "2025-04-20T14:00:00Z"
+}
 ```
