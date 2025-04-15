@@ -30,7 +30,7 @@ export class SpecialtiesService {
     return this.specialtyRepository.update(id, updateSpecialty)
   }
 
-  delete(id: number) {
+  remove(id: number) {
     return this.specialtyRepository.delete(id)
   }
 
